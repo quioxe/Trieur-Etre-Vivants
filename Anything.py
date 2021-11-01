@@ -1,5 +1,5 @@
 #Les vertébrés------------------------------------------------
-oiseaux = []
+oiseaux = ["perroquet"]
 amphibiens = []
 poissons = []
 reptiles = []
