@@ -1,19 +1,19 @@
-#Les vertébrés-----------------
+#Les vertébrés------------------------------------------------
 oiseaux = []
 amphibiens = []
 poissons = []
 reptiles = []
-mammifère = []
+mammifère = ["humain", "ours", "loup", "chien", "renard", "dauphin", "lapin", "chat"]
 chordés = [mammifère, reptiles, poissons, amphibiens, oiseaux]
-#------------------------------
+#-------------------------------------------------------------
 vertébrés = [chordés]
 
 #Les invertébrés---------------
-arachnides = []
-crustacés = []
-insectes = []
+arachnides = ["araignées"]
+crustacés = ["crabe", "homard", "langouste", "crevette"]
+insectes = ["moustiques", "libellules", "papillons"]
 arthropodes = [insectes, crustacés, arachnides]
-mollusques = []
+mollusques = ["escargot"]
 #------------------------------
 invertébrés = [mollusques, arthropodes]
 
@@ -22,4 +22,3 @@ animaux = [vertébrés, invertébrés]
 
 #La liste FINALE
 elements = [animaux]
-#this is a test
