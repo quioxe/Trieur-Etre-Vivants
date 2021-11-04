@@ -1,10 +1,9 @@
 from category import Category
-from database import Database
+import database
 from element import Element
 
 
 if __name__ == '__main__':
-    database = Database()
     if database.conn is not None:
         sql_create_tables = ("CREATE TABLE IF NOT EXISTS element(id integer PRIMARY KEY AUTOINCREMENT, name text NOT NULL, category_id integer NOT NULL, FOREIGN KEY(category_id) REFERENCES category(id))",
                              "CREATE TABLE IF NOT EXISTS category(id integer PRIMARY KEY AUTOINCREMENT, name text NOT NULL, category_id integer)")
