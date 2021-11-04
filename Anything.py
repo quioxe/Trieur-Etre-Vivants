@@ -1,15 +1,15 @@
 from category import Category
-import database
+from database import Database
 from element import Element
 
 
 if __name__ == '__main__':
-    conn = database.create_connection("sqlite.db")
-    if conn is not None:
+    database = Database()
+    if database.conn is not None:
         sql_create_tables = ("CREATE TABLE IF NOT EXISTS element(id integer PRIMARY KEY AUTOINCREMENT, name text NOT NULL, category_id integer NOT NULL, FOREIGN KEY(category_id) REFERENCES category(id))",
                              "CREATE TABLE IF NOT EXISTS category(id integer PRIMARY KEY AUTOINCREMENT, name text NOT NULL, category_id integer)")
         for sql in sql_create_tables:
-            database.create_table(conn, sql)
+            database.create_table(sql)
     else:
         print("Can't connect to database")
             
@@ -42,25 +42,24 @@ invertebre = [mollusque, arthropode]
 #Les ANIMAUX
 animal = [vertebre, invertebre]
 
-#La liste FINALE
-inp = input("1. Voulez vous introduire une categorie ? Appuyez 1 ")
+
+def menu():
+    print("1. Appuyer sur 1 pour visualiser les catégories.")
+    print("2. Appuyer sur 2 pour ajouter une catégorie.")
+    inp = input("Votre choix : ")
+    if inp == "1":
+        Category.category_listing()
+    elif inp == "2":
+        create_category()
 
 
-def create_category(conn):
+def create_category():
     category_name = input("Dites moi le nom de la categorie: ")
     print("Dites moi le parent de la categorie: ")
-    categories = Category.get_categories(conn)
-    for category in categories:
-        print("Index: " + str(category[0]) + ", nume : " + category[1])
+    Category.category_listing()
     category_parent = input("Alors, le index est: ")
     category = Category(category_name, category_parent)
-    category.save(conn)
-if (inp == "1"):
-    create_category(conn)
-print(Category.get_categories(conn))
+    category.save()
 
-
-
-
-
-
+while True:
+    menu()
